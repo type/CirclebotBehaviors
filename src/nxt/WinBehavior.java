@@ -47,7 +47,6 @@ public class WinBehavior implements Behavior {
 	 */
 	@Override
 	public boolean takeControl() {
-
 		return CircleBot.winflag;
 	}
 
@@ -68,11 +67,13 @@ public class WinBehavior implements Behavior {
 
 		// If we are still on the circle, lock the motors
 		if ((leftLight.readValue() < dark && rightLight.readValue() < dark)) {
+			//We are not sure if this is what we want to do
 			Motor.A.lock(100);
 			Motor.B.lock(100);
 		} else {
 			// We got pushed off
 			CircleBot.winflag = false;
+			suppressed = true;
 		}
 	}
 
@@ -83,7 +84,6 @@ public class WinBehavior implements Behavior {
 	@Override
 	public void suppress() {
 		suppressed = true;
-
 	}
 
 }

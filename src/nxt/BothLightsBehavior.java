@@ -35,11 +35,11 @@ public class BothLightsBehavior extends AbstractLightBehavior {
 	 */
 	@Override
 	public boolean takeControl() {
-		if ((leftLight.readValue() < dark && rightLight.readValue() < dark)
-				|| CircleBot.winflag == true) {
-			return true;
-		}
-		return false;
+		//Check to see if we won already
+		if(CircleBot.winflag) return true;
+		
+		//Check to see if both light sensors are  dark
+		return leftLight.readValue() < dark && rightLight.readValue() < dark;
 	}
 
 	/**
@@ -52,6 +52,7 @@ public class BothLightsBehavior extends AbstractLightBehavior {
 		// Change suppressed flag
 		suppressed = false;
 
+		//TODO Should we move forward, or is this handled in another behavior?
 		// Motor.B.forward();
 		CircleBot.winflag = true;
 	}

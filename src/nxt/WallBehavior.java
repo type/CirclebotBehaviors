@@ -41,10 +41,7 @@ public class WallBehavior implements Behavior {
 	 */
 	@Override
 	public boolean takeControl() {
-		if (touch.isPressed())
-			return true;
-		return false;
-
+		return touch.isPressed();
 	}
 
 	/**
@@ -74,10 +71,6 @@ public class WallBehavior implements Behavior {
 			Motor.A.forward();
 			Motor.C.backward();
 		}
-
-		// Motor.A.forward();
-		// Motor.C.forward();
-
 	}
 
 	/**

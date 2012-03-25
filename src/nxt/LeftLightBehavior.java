@@ -38,11 +38,8 @@ public class LeftLightBehavior extends AbstractLightBehavior {
 	 */
 	@Override
 	public boolean takeControl() {
-		// take control if leftLight < dark
-		if (leftLight.readValue() < dark && rightLight.readValue() > dark) {
-			return true;
-		}
-		return false;
+		// Take control if leftLight < dark and rightLight > dark
+		return leftLight.readValue() < dark && rightLight.readValue() > dark;
 	}
 
 }

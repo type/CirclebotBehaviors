@@ -32,7 +32,8 @@ public class ForwardBehavior implements Behavior {
 	@Override
 	public boolean takeControl() {
 		// maybe should be !winFlag??
-		return true;
+		//return true;
+		return !CircleBot.winflag;
 	}
 
 	/**

@@ -25,9 +25,10 @@ public class RightLightBehavior extends AbstractLightBehavior {
 	 *            The port that the right light sensor is connected to
 	 */
 	public RightLightBehavior(SensorPort port, SensorPort port2) {
-		super(port,port2);
-		
-		//We have to set the motors so that the turn will execute in the correct direction
+		super(port, port2);
+
+		// We have to set the motors so that the turn will execute in the
+		// correct direction
 		this.motor1 = Motor.C;
 		this.motor2 = Motor.A;
 	}
@@ -37,11 +38,8 @@ public class RightLightBehavior extends AbstractLightBehavior {
 	 */
 	@Override
 	public boolean takeControl() {
-		// take control if leftLight < dark
-		if (rightLight.readValue() < dark && leftLight.readValue() > dark) {
-			return true;
-		}
-		return false;
+		// Take control if rightLight < dark and leftLight > dark
+		return rightLight.readValue() < dark && leftLight.readValue() > dark;
 	}
 
 }
