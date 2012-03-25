@@ -5,6 +5,7 @@ import lejos.nxt.SensorPort;
 import lejos.robotics.subsumption.Arbitrator;
 import lejos.robotics.subsumption.Behavior;
 
+//Test
 public class CircleBot {
 	public static boolean winflag = false;
 	public static void main(String [] args) {
