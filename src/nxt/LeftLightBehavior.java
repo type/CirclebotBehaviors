@@ -14,21 +14,9 @@ import lejos.robotics.subsumption.*;
  * @author Chan
  * 
  */
-public class LeftLightBehavior implements Behavior {
+public class LeftLightBehavior extends AbstractLightBehavior {
 
-	/**
-	 * Flag that indicates whether or not our behavior should be suppressed
-	 */
-	private boolean suppressed = false;
-	/**
-	 * The light sensors we use in our behavior
-	 */
-	private LightSensor leftLight, rightLight;
-	/**
-	 * Darkness threshold
-	 */
-	private static final int dark = 35;
-
+	
 	/**
 	 * Constructor that takes two sensor ports, one for each light sensor
 	 * 
@@ -38,8 +26,11 @@ public class LeftLightBehavior implements Behavior {
 	 *            The port that the right light sensor is connected to
 	 */
 	public LeftLightBehavior(SensorPort port, SensorPort port2) {
-		leftLight = new LightSensor(port);
-		rightLight = new LightSensor(port2);
+		super(port,port2);
+		
+		//We have to set the motors so that the turn will execute in the correct direction
+		this.motor1 = Motor.A;
+		this.motor2 = Motor.C;
 	}
 
 	/**
@@ -52,44 +43,6 @@ public class LeftLightBehavior implements Behavior {
 			return true;
 		}
 		return false;
-	}
-
-	/**
-	 * The action that this behavior should perform when it takes control
-	 * 
-	 * In this case the action is to turn towards the left a bit
-	 */
-	@Override
-	public void action() {
-		// Change suppressed flag
-		suppressed = false;
-
-		// Reset motor A tachometer
-		Motor.A.resetTachoCount();
-
-		// Loop while the tachometer is less than 30
-		while (Motor.A.getTachoCount() < 30) {
-			Motor.C.setSpeed(500);
-			Motor.A.setSpeed(500);
-			Motor.A.forward();
-			Motor.C.backward();
-		}
-
-		// while ( !suppressed ){
-		// Thread.yield();
-		// }
-		// Motor.A.stop();
-		// Motor.C.stop();
-	}
-
-	/**
-	 * Temporarily disable the behavior because another behavior has taken
-	 * control
-	 */
-	@Override
-	public void suppress() {
-		suppressed = true;
-
 	}
 
 }

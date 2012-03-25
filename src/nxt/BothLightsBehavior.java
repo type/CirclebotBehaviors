@@ -14,20 +14,7 @@ import lejos.robotics.subsumption.*;
  * @author Chan
  * 
  */
-public class BothLightsBehavior implements Behavior {
-
-	/**
-	 * Flag that indicates whether or not our behavior should be suppressed
-	 */
-	private boolean suppressed = false;
-	/**
-	 * The light sensors we use in our behavior
-	 */
-	private LightSensor leftLight, rightLight;
-	/**
-	 * Darkness threshold
-	 */
-	private static final int dark = 35;
+public class BothLightsBehavior extends AbstractLightBehavior {
 
 	/**
 	 * Constructor that takes two sensor ports, one for each light sensor
@@ -38,8 +25,9 @@ public class BothLightsBehavior implements Behavior {
 	 *            The port that the right light sensor is connected to
 	 */
 	public BothLightsBehavior(SensorPort port, SensorPort port2) {
-		leftLight = new LightSensor(port);
-		rightLight = new LightSensor(port2);
+		super(port,port2);
+		
+		//Motors don't matter for this behavior
 	}
 
 	/**
@@ -66,15 +54,6 @@ public class BothLightsBehavior implements Behavior {
 
 		// Motor.B.forward();
 		CircleBot.winflag = true;
-	}
-
-	/**
-	 * Temporarily disable the behavior because another behavior has taken
-	 * control
-	 */
-	@Override
-	public void suppress() {
-		suppressed = true;
 	}
 
 }
