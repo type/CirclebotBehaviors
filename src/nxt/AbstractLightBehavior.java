@@ -50,7 +50,7 @@ public abstract class AbstractLightBehavior implements Behavior {
 	/**
 	 * The action that this behavior should perform when it takes control
 	 * 
-	 * In this case the action is to turn towards the right a bit
+	 * In this case the action is to turn a bit
 	 */
 	@Override
 	public void action() {
