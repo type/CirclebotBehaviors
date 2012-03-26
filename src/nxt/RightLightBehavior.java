@@ -15,6 +15,7 @@ public class RightLightBehavior implements Behavior{
 	}
 	public boolean takeControl() {
 		//take control if leftLight < dark
+		System.out.println("RIGHT BEHAVIOR");
 		if (rightLight.readValue() < dark && leftLight.readValue() > dark){
 			return true;
 		}

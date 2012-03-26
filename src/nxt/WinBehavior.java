@@ -19,7 +19,7 @@ public class WinBehavior implements Behavior{
 	
 	@Override
 	public boolean takeControl() {
-		
+		System.out.println("WIN BEHAVIOR");
 		return CircleBot.winflag;
 	}
 
@@ -27,23 +27,21 @@ public class WinBehavior implements Behavior{
 	public void action() {
 		suppressed = false;
 	
-		while(!Motor.A.isMoving() && !Motor.B.isMoving()) {
-			;
-		}
-		if ((leftLight.readValue() < dark && rightLight.readValue() < dark)) {
+//		while(!Motor.A.isMoving() && !Motor.B.isMoving()) {
+//			;
+//		}
+		while ((leftLight.readValue() < dark || rightLight.readValue() < dark)) {
 			Motor.A.lock(100);
-			Motor.B.lock(100);
+			Motor.C.lock(100);
 		}
-		else {
+		if (leftLight.readValue() > dark && rightLight.readValue() > dark)
 			CircleBot.winflag = false;
-		}
 		
 	}
 
 	@Override
 	public void suppress() {
 		suppressed = true;
-		
 	}
 
 }

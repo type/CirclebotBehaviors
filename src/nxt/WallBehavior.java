@@ -36,7 +36,7 @@ public class WallBehavior implements Behavior{
 		}
 		
 		Motor.A.resetTachoCount();
-		while (Motor.A.getTachoCount() < 750) {
+		while (Motor.A.getTachoCount() < 1000) {
 			Motor.A.forward();
 			Motor.C.backward();
 		}

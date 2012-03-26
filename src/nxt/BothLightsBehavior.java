@@ -15,6 +15,7 @@ public class BothLightsBehavior implements Behavior{
 	}
 	
 	public boolean takeControl() {
+		System.out.println("BOTH LIGHTS BEHAVIOR");
 		if ((leftLight.readValue() < dark && rightLight.readValue() < dark) || CircleBot.winflag == true) {
 			return true;
 		}
@@ -23,7 +24,12 @@ public class BothLightsBehavior implements Behavior{
 
 	public void action() {
 		suppressed = false;
-	//	Motor.B.forward();
+		//move forward a bit
+		Motor.A.resetTachoCount();
+		while (Motor.A.getTachoCount() < 10) {
+			Motor.A.forward();
+			Motor.C.forward();
+		}
 		CircleBot.winflag = true;
 	}
 
