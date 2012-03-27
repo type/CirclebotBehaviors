@@ -14,8 +14,8 @@ public class LeftLightBehavior implements Behavior{
 		rightLight = new LightSensor(port2);
 	}
 	public boolean takeControl() {
-		System.out.println("LEFT BEHAVIOR");
-		//take control if leftLight < dark
+		//System.out.println("LEFT BEHAVIOR");
+
 		if (leftLight.readValue() < dark && rightLight.readValue() > dark){
 			return true;
 		}

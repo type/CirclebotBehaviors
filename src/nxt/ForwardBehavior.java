@@ -8,18 +8,20 @@ public class ForwardBehavior implements Behavior{
 
 	private boolean suppressed = false;
 	
+	
 	public boolean takeControl() {
-		// maybe should be !winFlag??
 		return true;
 	}
 
 	
 	public void action() {
 		suppressed = false;
+		
 		Motor.C.setSpeed(800);
 		Motor.A.setSpeed(800);
 		Motor.A.forward();
 		Motor.C.forward();
+		
 		
 		while ( !suppressed ){
 			Thread.yield();

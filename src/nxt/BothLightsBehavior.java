@@ -15,7 +15,7 @@ public class BothLightsBehavior implements Behavior{
 	}
 	
 	public boolean takeControl() {
-		System.out.println("BOTH LIGHTS BEHAVIOR");
+		//System.out.println("BOTH LIGHTS BEHAVIOR");
 		if ((leftLight.readValue() < dark && rightLight.readValue() < dark) || CircleBot.winflag == true) {
 			return true;
 		}

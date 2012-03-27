@@ -7,6 +7,8 @@ import lejos.robotics.subsumption.Behavior;
 
 public class CircleBot {
 	public static boolean winflag = false;
+	public static int moved = 0;
+	
 	public static void main(String [] args) {
 		Behavior b1 = new WallBehavior(SensorPort.S3);
 		Behavior b2 = new ForwardBehavior();
